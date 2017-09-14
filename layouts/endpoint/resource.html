@@ -6,10 +6,11 @@
   {{ if .Params.operations }}
   {{ partial "endpoint/operations.html" .Params.operations }}
   {{ end }}
-
+  <hr/>
   <div class="description">
   {{ .Content }}
   </div>
+  <hr/>
 
   {{ if .Params.resource }}
   {{ partial "endpoint/resource.html" .Params.resource }}
