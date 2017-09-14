@@ -1,0 +1,85 @@
+
+
+.operations {
+  width: 100%;
+  border: $border-width $lightish $border-style;
+  border-radius: $border-radius;
+
+  .header {
+    border-bottom: $border-width $lightish $border-style;
+  }
+
+  >div {
+    display: -webkit-flex;
+    display: flex;
+  }
+
+  .header {
+    .methods {
+      padding: $gutter-regular $gutter-large;
+      flex: 1 1 ;
+      display: block;
+      text-align: left;
+      text-transform: uppercase;
+      }
+    .url {
+      text-align: left;
+    }
+  }
+
+  .url {
+    padding: $gutter-regular $gutter-large;
+    flex: 0 0 50%;
+
+    a, .var {
+      color: $link-color;
+      padding-left: $gutter-small;
+      text-decoration: none;
+    }
+  }
+  .methods {
+    display: -webkit-flex;
+    display: flex;
+    flex: 1 1 50%;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    border-left: 1px $lightish solid;
+
+    .verb-GET {
+      flex: 3;
+    }
+
+    .verb-POST {
+      flex: 4;
+    }
+
+    .verb-PUT {
+      flex: 3;
+    }
+
+    .verb-DELETE {
+      flex: 6;
+    }
+
+    .verb-PATCH {
+      flex: 5;
+    }
+
+    .method {
+      padding: $gutter-large*2;
+      flex: 0 0;
+      text-align: center;
+      text-transform: upper;
+
+      &.supported {
+        color: $verb-supported;
+      }
+      &.unsupported {
+        text-decoration: line-through;
+        font-weight: lighter;
+        color: $verb-unsupported;
+      }
+    }
+  }
+}

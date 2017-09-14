@@ -1,0 +1,49 @@
+/**
+@TODO: These colours need to be standardised and then broken out into a brand definition
+*/
+$white: #ffffff;
+$dark: #2F3E4D;
+$light: #dddddd;
+$lightish: #C5C9CE;
+$link-color: #A476C1;
+
+$green: #008000;
+
+$border-width: 1px;
+$border-style: solid;
+$border-radius: 5px;
+
+$gutter-small: 1pt;
+$gutter-regular: 3pt;
+$gutter-large: 5pt;
+
+/**
+@TODO: These styles need consistent naming and to be broken out into a theme definition for endpoints
+*/
+$verb-supported: $green;
+$verb-unsupported: #808080;
+
+
+
+
+body {
+  background-color: $dark;
+  color: $light;
+}
+.container {
+  width: 100vw;
+  max-width: 800px;
+}
+
+
+.nyi {
+    display: inline-block;
+    padding: $gutter-large;
+    margin: $gutter-large;
+    border: $border-width $border-style $light;
+    border-radius: $gutter-regular;
+    background: rgba($white, 0.1);
+}
+
+
+@import "components/_operations";
