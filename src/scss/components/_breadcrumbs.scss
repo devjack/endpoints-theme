@@ -1,0 +1,9 @@
+.breadcrumbs {
+    display: inline-block;
+    list-style-type: none;
+
+    li {
+        float: left;
+        padding: $gutter-large;
+    }
+}

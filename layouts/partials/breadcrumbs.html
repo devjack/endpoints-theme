@@ -1,0 +1,37 @@
+{{/*
+    Breadcrumbs based off: matcornic/hugo-theme-learn
+        https://github.com/digitalcraftsman/hugo-read-the-docs/blob/master/layouts/partials/breadcrumbs.html
+    MIT license applies:
+        https://github.com/matcornic/hugo-theme-learn/blob/master/LICENSE.md
+*/}}
+<div role="navigation" aria-label="breadcrumbs navigation">
+    {{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
+    {{ $.Scratch.Add "path" .Site.BaseURL }}
+    {{ $.Scratch.Add "currentURL" .URL }}
+    {{ $pageNotFound := (eq (replace $.Site.BaseURL .Site.BaseURL "404.html") .URL) }}
+    <ul class="breadcrumbs">
+        <li><a href="{{ .Site.BaseURL }}">Home</a>{{ if not (eq .URL "/")  }}{{ end }}</li>
+        {{ range $index, $element := split $url "/" }}
+            {{ $.Scratch.Add "path" $element }}
+            {{ $.Scratch.Add "path" "/" }}
+            <!-- Check if the current list item is the last one -->
+            {{ $isLast := eq ($.Scratch.Get "path") $.Permalink }}
+
+            {{ if ne $element "" }}
+                {{ if and (not $isLast) (not $pageNotFound) }}
+                  {{ range $.Site.Sections }}
+                    {{if eq .Section $element}}
+                    {{ $section := .}}
+                    <li><a href='{{ $.Scratch.Get "path" }}'>{{ title $section.Title }}</a></li>
+                    {{end}}
+                  {{ end }}
+                {{ else if $pageNotFound }}
+                <li>404</li>
+                {{ else }}
+                <li>{{ $.Title }}</li>
+                {{ end }}
+            {{ end }}
+        {{ end }}
+    </ul>
+    <hr/>
+</div>
