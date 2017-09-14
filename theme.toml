@@ -1,0 +1,11 @@
+name = "Endpoints"
+license = "Proprietary"
+description = "A hugo theme for rendering API endpoints documentation"
+tags = []
+features = []
+min_version = "0.27"
+
+[author]
+  name = "Jack skinner"
+  homepage = "https://developerjack.com"
+

@@ -1,0 +1,26 @@
+
+{{ $operations := . }}
+{{ $possibleVerbs := slice "GET" "PUT" "POST" "DELETE" }}
+
+
+
+<div class="operations">
+    <div class="header">
+      <div class="url">URL</div>
+      <div class="methods">Supports</div>
+    </div>
+    {{ range $o := $operations }}
+    <div>
+      <div class="url">{{ markdownify .url }}</div>
+      <div class="methods">
+        {{ range $verb := $possibleVerbs }}
+        {{ if lower $verb | in $o.methods }}
+        <div class="method supported verb-{{$verb}}">{{$verb}}</div>
+        {{ else }}
+        <div class="method unsupported verb-{{$verb}}">{{$verb}}</div>
+        {{ end }}
+        {{ end}}
+      </div>
+    </div>
+    {{ end }}
+</div>
