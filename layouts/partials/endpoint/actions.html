@@ -1,3 +1,24 @@
-<div class="actions nyi">
-<span class="subtle">(Unfortunately we've not yet implemented actions yet.)</span>
+{{ $actions := . }}
+
+{{ printf "%#v" $actions}}
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+{{ range $action,$detail :=  $actions }}
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#{{urlize $action}}" role="tab">{{upper $action }}</a>
+  </li>
+  {{ end }}
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  {{ range $action,$detail := $actions }}
+    <div class="tab-pane active" id="profile" role="tabpanel">
+          {{$exampleUrl := $detail.example}}
+          {{ $example := getJSON "/data" $exampleUrl }}
+
+          <pre><code class="language-json">{{jsonify $example}}</code></pre>
+    </div>
+    {{ end }}
 </div>

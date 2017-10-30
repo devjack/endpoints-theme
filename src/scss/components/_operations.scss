@@ -1,10 +1,37 @@
+$dark: #2F3E4D;
+$light: #dddddd;
+$lightish: #C5C9CE;
+$link-color: #A476C1;
 
+$green: #008000;
+$red: #F00000;
+
+$verb-supported: $green;
+$verb-unsupported: $light;
+
+
+$border-width: 1px;
+$border-style: solid;
+$border-radius: 5px;
+
+$gutter-small: 1pt;
+$gutter-regular: 2pt;
+$gutter-large: 3pt;
+
+
+body {
+  background-color: $dark;
+  color: $light;
+}
+.container {
+  width: 100vw;
+  max-width: 800px;
+}
 
 .operations {
   width: 100%;
   border: $border-width $lightish $border-style;
   border-radius: $border-radius;
-
   .header {
     border-bottom: $border-width $lightish $border-style;
   }
@@ -31,10 +58,9 @@
     padding: $gutter-regular $gutter-large;
     flex: 0 0 50%;
 
-    a, .var {
+    .var {
       color: $link-color;
       padding-left: $gutter-small;
-      text-decoration: none;
     }
   }
   .methods {

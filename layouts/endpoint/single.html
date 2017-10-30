@@ -1,0 +1,31 @@
+
+{{ define "main" }}
+{{ $dateFormat := default "2006 January" (index .Site.Params "date_format") }}
+<article>
+  <header>
+    <h2>{{ .Title | markdownify }}</h2>
+    <p>Released {{ .Date.Format $dateFormat }}</p>
+    <p>Upated {{ .Lastmod.Format $dateFormat }}</p>
+  </header>
+
+  {{ if .Params.operations }}
+  {{ partial "endpoint/operations.html" .Params.operations }}
+  {{ end }}
+
+  <div class="endpoint-description">{{ .Content }}</div>
+
+  {{ if .Params.resource }}
+  <div class="endpoint-resource">
+      {{ partial "endpoint/resource.html" .Params.resource }}
+  </div>
+  {{ end }}
+
+  {{ if .Params.actions }}
+  <div class="endpoint-examples">
+    {{ partial "endpoint/actions.html" .Params.actions }}
+  </div>
+  {{ end }}
+
+</article>
+
+{{ end }}
