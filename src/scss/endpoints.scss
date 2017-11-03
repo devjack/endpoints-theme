@@ -1,13 +1,20 @@
 /**
 @TODO: These colours need to be standardised and then broken out into a brand definition
 */
-$white: #ffffff;
+
+$white: #000000;
+
 $dark: #2F3E4D;
 $light: #dddddd;
 $lightish: #C5C9CE;
 $link-color: #A476C1;
 
 $green: #008000;
+$red: #F00000;
+
+$verb-supported: $red;
+$verb-unsupported: $light;
+
 
 $border-width: 1px;
 $border-style: solid;
@@ -17,12 +24,24 @@ $gutter-small: 1pt;
 $gutter-regular: 3pt;
 $gutter-large: 5pt;
 
+
+
 /**
 @TODO: These styles need consistent naming and to be broken out into a theme definition for endpoints
 */
 $verb-supported: $green;
-$verb-unsupported: #808080;
+$verb-unsupported: $dark;
 
+
+
+body {
+  background-color: $light;
+  color: $dark;
+}
+.container {
+  width: 100vw;
+  max-width: 800px;
+}
 
 .nyi {
     display: inline-block;
