@@ -1,0 +1,38 @@
+{{ $property := .property }}
+{{ $detail := .detail }}
+
+
+
+
+<div class="field">
+  <input class="toggle-expander" id="toggle-{{ $property }}" type="checkbox" checked>
+  <label for="toggle-{{$property }}">&nbsp;</label>
+  <span class="fieldname">{{$property}}</span>
+  <span class="datatype">{{$detail.type}}</span>
+  {{/*
+    Should be using .Isset.
+    https://github.com/gohugoio/hugo/blob/e0cf2e05bbdcb8b4a3f875df84a878f4ca80e904/tpl/collections/collections.go#L322
+    No failure case for map[interface] - yaml parser only maps string:interface for top level
+    subsequently, all nested YAML params are of type interface which is ... useless.
+  */}}
+  {{if or $detail.description (eq $detail.description "")}}
+  <div class="description">
+    {{$detail.description | markdownify}}
+    {{if or $detail.example (eq $detail.example "")}}
+    <div class="example">
+      <span>Example:</span><pre><code>{{$detail.example}}</code></pre>
+    </div>
+    {{end}}
+
+    {{if or $detail.properties (eq $detail.properties "")}}
+    <div class="fieldlist">
+        {{ range $sub_property, $sub_detail := $detail.properties }}
+            {{$subfield := (dict "property" $sub_property "detail" $sub_detail)}}
+
+            {{ partial "endpoint/resource/field" $subfield}}
+        {{end}}
+    </div>
+    {{end}}
+  </div>
+  {{end}}
+</div>

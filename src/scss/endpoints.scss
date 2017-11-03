@@ -54,6 +54,10 @@ body {
     vertical-align: middle;
 }
 
+.resource {
+    max-width: 500px;
+}
 
 @import "components/_operations";
+@import "components/_resource";
 @import "components/_breadcrumbs";

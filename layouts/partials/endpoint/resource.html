@@ -1,28 +1,14 @@
-{{/* Could use getJSON to workaround .Isset hack below. Requires pre-processing changes to create JSON files. */}}
 {{ $resource := . }}
-<h4>Schema: {{.name}}</h4>
+<div class="resource">
+    <div class="header">
+      <h4>{{.name}} Attributes</h4>
+    </div><!-- .header -->
+    <div class="fieldlist">
+     {{ range $property, $detail := $resource.properties }}
+     {{$field := (dict "detail" $detail "property" $property )}}
 
-<div>
-  {{ range $property, $detail := $resource.properties }}
-  <div>
-    <div class="field-name">{{$property}}</div>
-    <div class="field-type">{{$detail.type}}</div>
 
-    {{/*
-      Should be using .Isset.
-      https://github.com/gohugoio/hugo/blob/e0cf2e05bbdcb8b4a3f875df84a878f4ca80e904/tpl/collections/collections.go#L322
-      No failure case for map[interface] - yaml parser only maps string:interface for top level
-      subsequently, all nested YAML params are of type interface which is ... useless.
-    */}}
-
-    {{if or $detail.description (eq $detail.description "")}}
-    <div class="field-detail">{{$detail.description}}
-      {{if or $detail.example (eq $detail.example "")}}
-      <span class="field-example">e.g. {{$detail.example}}</span>
-      {{end}}
+         {{ partial "endpoint/resource/field" $field }}
+     {{end}}
     </div>
-    {{end}}
-
-  </div>
-  {{ end }}
 </div>

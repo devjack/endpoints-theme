@@ -1,0 +1,75 @@
+
+.field {
+  margin-left: $gutter-large*2;
+  padding: $gutter-large;
+  padding-right: 0;
+  height: 100%;
+
+  .fieldname {
+    display: inline-block;
+    width: 50%;
+  }
+  .example {
+    pre,code {
+      display: inline-block;
+    }
+    code {
+      background: $light;
+      border: 1px solid $dark;
+      border-radius: $gutter-large;
+      padding: 2pt;
+      margin: $gutter-small;
+    }
+  }
+
+  .datatype {
+    width: 30%;
+    display: inline-block;
+  }
+
+  .description {
+  height: 0px;
+  overflow: hidden;
+  transition: height 0.5s;
+  }
+
+  input.toggle-expander {
+    display: none;
+    visibility: hidden;
+  }
+  label {
+    display: inline-block;
+    padding: 0.5em;
+    text-align: center;
+    max-width: 10%;
+  }
+  label:hover {
+    color: #000;
+  }
+  label::before {
+    font-family: Consolas, monaco, monospace;
+    font-weight: bold;
+    font-size: 15px;
+    content: "+";
+    vertical-align: text-top;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 3px;
+    background: radial-gradient(ellipse at center, #CCC 50%, transparent 50%);
+  }
+  .toggle-expander:checked ~ .description {
+    height: auto;
+    margin-left: $gutter-large*4;
+    background-color: $lightish;
+    border-radius: $gutter-large;
+    padding: $gutter-large;
+    width: 100%;
+  }
+  .toggle-expander:not(:checked) ~ .description {
+  }
+
+  .toggle-expander:checked ~ label::before {
+    content: "-";
+  }
+}
